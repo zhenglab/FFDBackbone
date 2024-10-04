@@ -68,13 +68,13 @@ Notice: It is recommended to use BEiT v2' as the backbone, which is pre-trained 
 <td align="center">89.18%</td>
 <td align="center">84.02%</td>
 <td align="center">86.48%</td>
-<td align="center"><a href="">download</a></td>
+<td align="center"><a href="https://pan.baidu.com/s/1EOgJeE4Gb4TAaxvSkhK4lw">download</a></td>
 <tr><td align="left">Ours</td>
 <td align="center">99.36%</td>
 <td align="center">90.46%</td>
 <td align="center">84.90%</td>
 <td align="center">90.97%</td>
-<td align="center"><a href="">download</a></td>
+<td align="center"><a href="https://pan.baidu.com/s/1EOgJeE4Gb4TAaxvSkhK4lw">download</a></td>
 </tbody></table>
 
 #### 1.2 Choose a fine-tuning framework
