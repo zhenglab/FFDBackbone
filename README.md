@@ -9,10 +9,10 @@
 Welcome to `FFDBackbone`, a comprehensive project to fintune various backbones for face forgery detection (FFD). This project offers robust support for loading backbones through diverse pre-training methods, fostering seamless integration of ideas and enabling a swift project initiation.
 
 Its highlights are as follows:
-- [x] Support the implementation of mainstream networks, including ResNet, XceptionNet, EfficientNet, ViT.
-- [x] Support the transfer of mainstream self-supervised pre-trained backbone, including MoCo v2, MoCo v3, SimCLR, BYOL, SimSiam, MAE, BEiT v2, BEiT v3, SimMIM, DINO, ConMIM, etc.
-- [x] Provided further pre-trained backbones on real faces, which can more effectively improve the performance of FFD.
-- [x] Provided an effective training framework to improve fine-tuning efficiency. 
+-  Support the implementation of mainstream networks, including ResNet, XceptionNet, EfficientNet, ViT.
+-  Support the transfer of mainstream self-supervised pre-trained backbone, including MoCo v2, MoCo v3, SimCLR, BYOL, SimSiam, MAE, BEiT v2, BEiT v3, SimMIM, DINO, ConMIM, etc.
+-  Provided further pre-trained backbones on real faces, which can more effectively improve the performance of FFD.
+-  Provided an effective training framework to improve fine-tuning efficiency. 
 
 ### Preparation
 
