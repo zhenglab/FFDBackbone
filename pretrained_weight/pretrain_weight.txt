@@ -1,0 +1,1 @@
+Download weights (BEiT-1k-Face-55w.tar) from https://pan.baidu.com/s/1EOgJeE4Gb4TAaxvSkhK4lw (code:fr6r) and put it here.

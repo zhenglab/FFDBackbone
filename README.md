@@ -86,7 +86,7 @@ CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 -
 ```
 
 Fine-tuning with competitive backbone Framework:
-Download weights(BEiT-1k-Face-55w.tar) from [here](https://pan.baidu.com/s/1EOgJeE4Gb4TAaxvSkhK4lw) (code:fr6r) and put it into pretrained_weight/ . 
+Download weights(BEiT-1k-Face-55w.tar) from [here](https://pan.baidu.com/s/1EOgJeE4Gb4TAaxvSkhK4lw) (code:fr6r) and put it into 'pretrained_weight/' . 
 
 ```
 CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 --master_port 11023 train_dualbranch.py -c configs/DBBF.yaml
