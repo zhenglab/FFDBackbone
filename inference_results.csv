@@ -1,0 +1,8 @@
+img_name,y_pred
+test_img/Fake_ori.png,0.99992335
+test_img/Fake2.png,0.9996152
+test_img/Fake1.png,0.9998584
+test_img/Fake3.png,0.9994948
+test_img/Real2.png,0.06445194
+test_img/Real1.png,0.006921941
+test_img/Fake4.png,0.9999298
