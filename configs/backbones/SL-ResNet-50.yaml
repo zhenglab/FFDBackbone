@@ -1,0 +1,107 @@
+seed: 1234
+torch_home: 
+
+method:  FaceForensics_c23 
+compression: c23
+checkpoints_dir: checkpoints
+name: ${model.label}_${model.name}_${model.params.network}
+exam_dir: ${checkpoints_dir}/${name}
+is_aligned: True
+align_type: com 
+
+transform_params:
+  image_size: 224
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+
+train:
+  batch_size: 64 
+  num_workers: 16
+  print_info_step_freq: 10
+  save_model_interval: 10
+  max_epoches: 1
+  use_warmup: False
+  warmup_epochs: 0
+  last_epoch_max_acc: 0.0
+
+  dataset:
+    name: Image_dataset
+    params:
+      root: ../datasets_processed/
+      method: ${method}
+      split: train
+      num_segments: 8 #8
+      cutout: True #True
+      is_sbi: False
+      image_size: ${transform_params.image_size}
+
+test:
+  batch_size: ${train.batch_size}
+  num_workers: ${train.num_workers}
+  dataset:
+    name: Image_dataset
+    params:
+      root: ../datasets_processed_8frames/
+      method:  ${method}  #FF-ALL 
+      split: test
+      num_segments: ${train.dataset.params.num_segments}
+      cutout: True
+      is_sbi: False
+      image_size: ${transform_params.image_size}
+
+final_test:
+  batch_size: ${test.batch_size}
+  num_workers: ${test.num_workers}
+  dataset:
+    name: Image_dataset_test
+    params:
+      root: ../datasets_processed_8frames/
+      methods: ['ALL']
+      method: ALL
+      split: test
+      is_sbi: False
+      num_segments: ${train.dataset.params.num_segments}
+      image_size: ${transform_params.image_size}
+
+model:
+  name:  ResNet
+  label:  SL-1k
+  backbone: ${model.name}
+  params:
+    network: resnet50
+    pretrained_path: './pretrained_weight/resnet50_a1_0-14fe96d1.pth'
+    image_size: ${transform_params.image_size}
+    feature_dim: 2048
+  resume: 
+  only_resume_model: False
+
+
+optimizer:
+  type: N #SAM
+  name: lamb #AdamW #Adam  # SAM   #Adam
+  params:
+    lr: 1e-4
+    opt: ${optimizer.name}
+    weight_decay:  0.05  #1.0e-5
+    momentum: 0.9
+    clip_mode: norm
+    layer_decay: .75
+
+loss:
+  name: CrossEntropyLoss
+  params:
+
+scheduler:
+  sched: cosine
+  lr: ${optimizer.params.lr}
+  lr_noise_pct: 0.67
+  lr_noise_std: 1.0
+  lr_cycle_mul: 1.0
+  lr_cycle_decay: 0.5
+  lr_cycle_limit: 1
+  lr_k_decay: 1.0
+  warmup_lr: 1e-6
+  min_lr: 1e-5
+  epochs: ${train.max_epoches}
+  warmup_epochs: 1
+  cooldown_epochs: 5 #1 #5
