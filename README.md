@@ -3,6 +3,7 @@
 [Introduction](#introduction) |
 [Preparation](#Preparation) |
 [Get Started](#get-started) |
+[Paper](https://arxiv.org/abs/2409.16945) |
 
 ### Introduction
 
