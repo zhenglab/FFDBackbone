@@ -13,5 +13,3 @@ def convert_weight(pth_path, checkpoint_save_dir):
     checkpoint_m = OrderedDict()
     checkpoint_m['state_dict'] = sd
     torch.save(checkpoint_m, checkpoint_save_dir)
-
-convert_weight('Final-BEiT_v2.tar','Final-BEiT_v2.tar')
