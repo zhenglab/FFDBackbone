@@ -39,6 +39,7 @@ class Image_dataset_test(data.Dataset):
         file_ext = '.png'
         file_names = [f for f in os.listdir(frame_path) if f.endswith(file_ext)]
         all_frame_idxs = np.array([int(f[:-len(file_ext)]) for f in file_names])
+        all_frame_idxs.sort()
         if len(all_frame_idxs) >= self.num_segments:
             step = len(all_frame_idxs) // self.num_segments
             sampled_frame_idxs = all_frame_idxs[::step][:self.num_segments]
@@ -46,6 +47,7 @@ class Image_dataset_test(data.Dataset):
             sampled_frame_idxs = []
             idxs = dataloader_util.check_frame_len(len(all_frame_idxs), self.num_segments)
             sampled_frame_idxs = all_frame_idxs[idxs]
+        sampled_frame_idxs.sort()
         return sampled_frame_idxs
     
     def parse_dataset_info(self):

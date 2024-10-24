@@ -44,6 +44,7 @@ class Image_dataset(data.Dataset):
             sampled_frame_idxs = []
             idxs = dataloader_util.check_frame_len(len(all_frame_idxs), self.num_segments)
             sampled_frame_idxs = all_frame_idxs[idxs]
+        sampled_frame_idxs.sort()
         return sampled_frame_idxs
     
     def parse_dataset_info(self):
