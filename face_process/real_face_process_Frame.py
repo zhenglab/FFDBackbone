@@ -110,10 +110,3 @@ def crop_face_sbi(img,bbox=None,margin=False,crop_by_bbox=True,abs_coord=False,o
     return img_cropped
 
 
-if __name__=='__main__':
-    methods = ['Celeb-DF', 'DFDC', 'DiffHead', 'FF', 'FFIW', 'hrfae', 'iplap', 'makeittalker', 'mobileswap', 'sadtalker', 'styleHEAT', 'VIPL', 'wav2lip']
-    methods = [  'DFv1', 'FF', 'FFIW', 'ROSE-Youtu','DFDC',]
-    methods = ['DFDC']
-    for method in methods:
-        process(method)
-
