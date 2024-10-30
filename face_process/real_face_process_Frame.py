@@ -34,7 +34,8 @@ def process(frame_name):
             # frame_croped = crop_face_sbi(frame, bbox=bbox, margin=False)
             frame_croped = crop_face_sbi(frame,bbox,margin=False,crop_by_bbox=True,abs_coord=True,phase='test')
             frame_croped = cv2.resize(frame_croped,(224,224),interpolation=cv2.INTER_LINEAR)
-            frame_name = frame_name.replace('.png', '_aligned.png')
+            frame_name = frame_name.rsplit('/', 1)[0] + '_aligned/' + frame_name.rsplit('/', 1)[1]
+            # frame_name = frame_name.replace('.png', '_aligned.png')
             directory_path = os.path.dirname(frame_name)
             if not os.path.exists(directory_path):
                 os.makedirs(directory_path)
