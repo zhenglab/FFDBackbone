@@ -19,7 +19,7 @@ train:
   num_workers: 16
   print_info_step_freq: 10
   save_model_interval: 10
-  max_epoches: 1
+  max_epoches: 60
   use_warmup: False
   warmup_epochs: 0
   last_epoch_max_acc: 0.0
