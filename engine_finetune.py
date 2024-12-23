@@ -340,7 +340,7 @@ def test_dual_one_epoch(dataloader, model, criterion_b, criterion_e, optimizer, 
             checkpoint_save_dir = os.path.join(os.path.join(args.exam_dir, 'ckpt'), checkpoint_save_name)
             mainbranch_weight_dir = os.path.join(os.path.join(args.exam_dir, 'ckpt'), 'Final-mainbranch.tar')
             torch.save(checkpoint, checkpoint_save_dir)
-            convert_weight(checkpoint, mainbranch_weight_dir)
+            convert_weight(checkpoint_save_dir, mainbranch_weight_dir)
 
         elif current_epoch_acc >= last_epoch_max_acc:
             checkpoint_save_name = "Epoch-{}-Step-{}-ACC-{:.4f}-RealACC-{:.4f}-FakeACC-{:.4f}-Loss-{:.5f}-LR-{:.6g}.tar".format(epoch, global_step, acc, real_acc, fake_acc, loss, lr)
