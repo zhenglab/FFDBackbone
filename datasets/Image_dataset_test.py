@@ -107,7 +107,7 @@ class Image_dataset_test(data.Dataset):
             all_frames = torch.stack(all_frames)  # T, C, H, W
         else:
             all_frames = torch.zeros((self.num_segments, 3, self.image_size, self.image_size))
-            video_labels = frame_list[0][1]+2
+            video_labels = frame_list[0][1]
         for i, frame in enumerate(all_frames):
             get_frames.append(frame)
         process_imgs = torch.stack(get_frames)
