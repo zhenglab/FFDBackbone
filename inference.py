@@ -29,8 +29,7 @@ def get_model():
     return model
 
 def Inference_Img(model, path, transfrom):
-    img_al = process(path)
-    img = Image.open(img_al)
+    img = process(path)
     img = np.asarray(img)
     tmp_imgs = {"image": img}
     input_tensor = transfrom(**tmp_imgs)
