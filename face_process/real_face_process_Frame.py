@@ -15,35 +15,22 @@ def split_array(array, segment_size):
         segmented_array.append(segment)
     return segmented_array
 
-def process(frame_name):
-    frame=cv2.imread(os.path.join(frame_name))
+def process(frame):
+    frame=cv2.imread(frame)
     frames = []
-    clip = []
     frames.append(frame)
-    clip.append(frame_name)
     detect_res = flatten(
         [detector.detect(item) for item in partition(frames, 1)]
     )
     detect_res = get_valid_faces(detect_res, thres=0.5)
-    for faces, frame, frame_name in zip(detect_res, frames, clip):
-        # for i, (bbox, lm5, score) in enumerate(faces):
+    for faces, frame in zip(detect_res, frames):
         if len(faces) > 0:
             bbox, lm5, score = faces[0]
             frame, landmark, bbox=face_utils.crop_aligned(frame,lm5,landmarks_68=None,bboxes=bbox,aligned_image_size=224)
             bbox = np.array([[bbox[0],bbox[1]],[bbox[2],bbox[3]]])
-            # frame_croped = crop_face_sbi(frame, bbox=bbox, margin=False)
             frame_croped = crop_face_sbi(frame,bbox,margin=False,crop_by_bbox=True,abs_coord=True,phase='test')
             frame_croped = cv2.resize(frame_croped,(224,224),interpolation=cv2.INTER_LINEAR)
-            frame_name = frame_name.rsplit('/', 1)[0] + '_aligned/' + frame_name.rsplit('/', 1)[1]
-            # frame_name = frame_name.replace('.png', '_aligned.png')
-            directory_path = os.path.dirname(frame_name)
-            if not os.path.exists(directory_path):
-                os.makedirs(directory_path)
-            try:
-                cv2.imwrite(frame_name, frame_croped)
-            except Exception as e:
-                print("An error occurred:", str(e))
-    return frame_name
+    return frame_croped
 
 def get_valid_faces(detect_results, max_count=10, thres=0.5, at_least=False):
     new_results = []
